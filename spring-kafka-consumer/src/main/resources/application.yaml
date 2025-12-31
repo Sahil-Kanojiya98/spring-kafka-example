@@ -2,16 +2,16 @@ spring:
   application:
     name: spring-kafka-consumer
 
-  kafka:
-    bootstrap-servers: localhost:9092
-
-    consumer:
-      group-id: order-service-group
-      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
-      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
-      properties:
-        spring.json.trusted.packages: '*'
-      isolation-level: read_committed
+#  kafka:
+#    bootstrap-servers: localhost:9092
+#
+#    consumer:
+#      group-id: order-service-group
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.springframework.kafka.support.serializer.JsonDeserializer
+#      properties:
+#        spring.json.trusted.packages: '*'
+#      isolation-level: read_committed
 
   datasource:
     url: jdbc:h2:mem:testdb
