@@ -10,6 +10,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.support.Acknowledgment;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class UserCreatedEventListener {
@@ -22,6 +23,7 @@ public class UserCreatedEventListener {
         this.processedEventRepository = processedEventRepository;
     }
 
+    @Transactional
     @KafkaListener(topics = "users", groupId = "user-service-group")
     public void handleUserCreated(ConsumerRecord<String, UserCreatedEvent> userCreatedEventConsumerRecord, Acknowledgment ack) {
         String key = userCreatedEventConsumerRecord.key();
